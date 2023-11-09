@@ -2,24 +2,37 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RegisterForm = () => {
-    const {register, handleSubmit}=useForm();
+    const {register, handleSubmit, watch, formState:{errors}}=useForm({
+      defaultValues: {
+        firstName:"",
+        lastName: ""
+      }
+    });
+
+    console.log(watch())
 
     const onSubmit=(data)=>{
-        alert(JSON.stringify(data));
+        console.log("data", data);
     }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("firstName")} placeholder='First name'/> 
-        <input {...register("lastName")} placeholder='Last name'/>
-        <select {...register("category")}>
-            <option value="">Select...</option>
-            <option value="A">Category A</option>
-            <option value="B">Category B</option>
-        </select>
-        
-        <input type="submit" value="Submit"/>
+    <form class="flex flex-col max-w-md mx-auto gap-2 mt-3" onSubmit={handleSubmit(onSubmit)}>
 
+        <input class="bg-slate-300 h-10 p-2" {...register("firstName", {required:"This is required"})} placeholder='First name'/> 
+        <p>{errors?.firstName?.message}</p>
+
+        <input class="bg-slate-300 h-10 p-2" {...register("lastName", {required: "This is required", minLength: {value:4, message:"min-length is 4"}})} placeholder='Last name'/>
+        <p>{errors?.lastName?.message}</p>
+        
+        <select class="bg-slate-300 h-10 p-2" {...register("category", {required:"This is required"})}>
+          <option value="">Select category ...</option>
+          <option value="A">Category A</option>
+          <option value="B">Category B</option>
+        </select>
+        <p>{errors?.category?.message}</p>
+        
+        <input class="bg-slate-400 h-10 p-2 mt-3 hover:bg-slate-600 active:bg-slate-700" type="submit" value="Submit"/>
+        
     </form>
   );
 }
