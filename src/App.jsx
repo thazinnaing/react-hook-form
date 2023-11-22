@@ -6,9 +6,9 @@ import SetErrors from './components/SetErrors';
 const App = () => {
   return (
     <div>
-      {/* <RegisterForm/> */}
+      <RegisterForm/>
       {/* <Unregister/> */}
-      <SetErrors/>
+      {/* <SetErrors/> */}
       
     </div>
   );

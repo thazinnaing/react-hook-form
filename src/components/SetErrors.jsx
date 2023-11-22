@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const SetErrors = () => {
-    const {handleSubmit, register, setError, clearErrors, formState: {errors}}=useForm({
+    const {handleSubmit, register, reset, setError, clearErrors, formState: {errors}}=useForm({
         defaultValues:{
             firstName: "",
             lastName: "",
@@ -11,15 +11,24 @@ const SetErrors = () => {
     }
     );
 
-    const onSubmit=(data)=>{
-        console.log("data", data)
+    const onSubmit=(e)=>{
+
+        console.log("data", e)
+        reset({
+            firstName: "",
+            lastName:""
+        },
+        {
+            keepErrors: true,
+            keepDirty: true,
+        })
     }
 
     return (
     <section class="p-10 bg-slate-400">
         <form class="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
 
-            <input {...register("firstName")} placeholder='First Name'/>
+            <input {...register("firstName", {required: "This is required"})} placeholder='First Name'/>
 
             <p class="text-red-600">{errors.firstName?.message}</p>
 
@@ -45,8 +54,8 @@ const SetErrors = () => {
             </button>
 
 
-            <input {...register("lastName")} placeholder='Last Name'/>
-
+            <input {...register("lastName", {required: "This is required"})} placeholder='Last Name'/>
+            <p class="text-red-600">{errors.lastName?.message}</p>
             <p class="text-red-600">{errors.lastName?.types?.error1}</p>
             <p class="text-red-600">{errors.lastName?.types?.error2}</p>
             

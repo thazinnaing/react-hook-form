@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RegisterForm = () => {
-    const {register, handleSubmit, watch, formState:{errors}}=useForm({
+    const {register, handleSubmit, watch, resetField, formState:{errors}}=useForm({
       defaultValues: {
         firstName:"",
         lastName: ""
@@ -30,6 +30,24 @@ const RegisterForm = () => {
           <option value="B">Category B</option>
         </select>
         <p>{errors?.category?.message}</p>
+
+        <button class="w-25 bg-green-400 h7"
+                type="button"
+                onClick={()=>{
+                    resetField("firstName");
+                }}
+            >
+                ResetFeild firstName
+        </button>
+
+        <button class="w-25 bg-green-400 h7"
+                type="button"
+                onClick={()=>{
+                    resetField("lastName");
+                }}
+            >
+                ResetFeild lastName
+        </button>
         
         <input class="bg-slate-400 h-10 p-2 mt-3 hover:bg-slate-600 active:bg-slate-700" type="submit" value="Submit"/>
         
