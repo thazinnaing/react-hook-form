@@ -5,11 +5,10 @@ import SetErrors from './components/SetErrors';
 
 const App = () => {
   return (
-    <div>
+    <div class="flex flex-col gap-10 bg-yellow-200">
       <RegisterForm/>
-      {/* <Unregister/> */}
-      {/* <SetErrors/> */}
-      
+      <Unregister/>
+      <SetErrors/>
     </div>
   );
 }

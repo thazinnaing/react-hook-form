@@ -28,7 +28,7 @@ const SetErrors = () => {
     <section class="p-10 bg-slate-400">
         <form class="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
 
-            <input {...register("firstName", {required: "This is required"})} placeholder='First Name'/>
+            <input class="bg-slate-300 h-10 p-2" {...register("firstName", {required: "This is required"})} placeholder='First Name'/>
 
             <p class="text-red-600">{errors.firstName?.message}</p>
 
@@ -54,7 +54,7 @@ const SetErrors = () => {
             </button>
 
 
-            <input {...register("lastName", {required: "This is required"})} placeholder='Last Name'/>
+            <input class="bg-slate-300 h-10 p-2" {...register("lastName", {required: "This is required"})} placeholder='Last Name'/>
             <p class="text-red-600">{errors.lastName?.message}</p>
             <p class="text-red-600">{errors.lastName?.types?.error1}</p>
             <p class="text-red-600">{errors.lastName?.types?.error2}</p>
@@ -82,7 +82,7 @@ const SetErrors = () => {
                 Clear Multiple Errors
             </button>
 
-            <input class="w-14 bg-slate-50 h7" type="submit" value="Submit"/>
+            <input class="bg-slate-200 h-10 p-2 mt-3 hover:bg-slate-600 active:bg-slate-700" type="submit" value="Submit"/>
         </form>
     </section>
   );
