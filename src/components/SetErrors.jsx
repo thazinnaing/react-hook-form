@@ -5,7 +5,9 @@ const SetErrors = () => {
     const {handleSubmit, register, setError, formState: {errors}}=useForm({
         defaultValues:{
             firstName: "",
-        }
+            lastName: "",
+        },
+        criteriaMode: "all" // for multiple errors , set criteriaMode to all
     }
     );
 
@@ -19,7 +21,9 @@ const SetErrors = () => {
 
             <input {...register("firstName")} placeholder='First Name'/>
 
-            <button class="w-20 bg-slate-50 h7"
+            <p class="text-white">{errors.firstName?.message}</p>
+
+            <button class="w-25 bg-blue-300 h7"
                 type="button"
                 onClick={()=>{
                     setError("firstName",{
@@ -28,11 +32,28 @@ const SetErrors = () => {
                     })
                 }}
             >
-                setErrors
+                Single Error
             </button>
 
-            <p class="text-white">{errors.firstName?.message}</p>
+            <input {...register("lastName")} placeholder='Last Name'/>
+
+            <p class="text-white">{errors.lastName?.types?.error1}</p>
+            <p class="text-white">{errors.lastName?.types?.error2}</p>
             
+            <button class="w-25 bg-blue-300 h7"
+                type="button"
+                onClick={()=>{
+                    setError("lastName",{
+                        types: {
+                            error1: "Error message 1",
+                            error2: "Error message 2",
+                        }
+                    })
+                }}
+            >
+                Multiple Errors
+            </button>
+
             <input class="w-14 bg-slate-50 h7" type="submit" value="Submit"/>
         </form>
     </section>
