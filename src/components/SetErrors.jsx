@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const SetErrors = () => {
-    const {handleSubmit, register, setError, formState: {errors}}=useForm({
+    const {handleSubmit, register, setError, clearErrors, formState: {errors}}=useForm({
         defaultValues:{
             firstName: "",
             lastName: "",
@@ -35,6 +35,16 @@ const SetErrors = () => {
                 Single Error
             </button>
 
+            <button class="w-25 bg-blue-300 h7"
+                type="button"
+                onClick={()=>{
+                    clearErrors("firstName")
+                }}
+            >
+                Clear Error
+            </button>
+
+
             <input {...register("lastName")} placeholder='Last Name'/>
 
             <p class="text-white">{errors.lastName?.types?.error1}</p>
@@ -52,6 +62,15 @@ const SetErrors = () => {
                 }}
             >
                 Multiple Errors
+            </button>
+
+            <button class="w-25 bg-blue-300 h7"
+                type="button"
+                onClick={()=>{
+                    clearErrors(["firstName","lastName"])
+                }}
+            >
+                Clear Errors
             </button>
 
             <input class="w-14 bg-slate-50 h7" type="submit" value="Submit"/>
