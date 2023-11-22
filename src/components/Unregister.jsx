@@ -34,7 +34,7 @@ const Unregister = () => {
 
             <input class="h-5 w-5" type="checkbox" {...register("checkbox")} />
             <input class="w-14 bg-slate-50 h7" type="submit" value="Submit"/>
-</form>
+        </form>
     </section>
     
   );
