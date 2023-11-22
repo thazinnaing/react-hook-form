@@ -21,7 +21,7 @@ const SetErrors = () => {
 
             <input {...register("firstName")} placeholder='First Name'/>
 
-            <p class="text-white">{errors.firstName?.message}</p>
+            <p class="text-red-600">{errors.firstName?.message}</p>
 
             <button class="w-25 bg-blue-300 h7"
                 type="button"
@@ -35,20 +35,20 @@ const SetErrors = () => {
                 Single Error
             </button>
 
-            <button class="w-25 bg-blue-300 h7"
+            <button class="w-25 bg-green-300 h7"
                 type="button"
                 onClick={()=>{
                     clearErrors("firstName")
                 }}
             >
-                Clear Error
+                Clear One Error
             </button>
 
 
             <input {...register("lastName")} placeholder='Last Name'/>
 
-            <p class="text-white">{errors.lastName?.types?.error1}</p>
-            <p class="text-white">{errors.lastName?.types?.error2}</p>
+            <p class="text-red-600">{errors.lastName?.types?.error1}</p>
+            <p class="text-red-600">{errors.lastName?.types?.error2}</p>
             
             <button class="w-25 bg-blue-300 h7"
                 type="button"
@@ -64,13 +64,13 @@ const SetErrors = () => {
                 Multiple Errors
             </button>
 
-            <button class="w-25 bg-blue-300 h7"
+            <button class="w-25 bg-green-400 h7"
                 type="button"
                 onClick={()=>{
                     clearErrors(["firstName","lastName"])
                 }}
             >
-                Clear Errors
+                Clear Multiple Errors
             </button>
 
             <input class="w-14 bg-slate-50 h7" type="submit" value="Submit"/>
